@@ -1,4 +1,5 @@
 ## JsForm
+An API to dynamically add forms to your website.
 
 ## Why?
 Why not?
@@ -12,6 +13,8 @@ Why not?
 * Implement render function
 * Add form attributes
 * Global and local whitelist?
+
+## API
 
 ```Javascript
 var form = new JsForm('login.php', 'POST');
