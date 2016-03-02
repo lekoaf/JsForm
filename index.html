@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<div id="output">
+  </div>
+</body>
+<script src="jsform.js"></script>
+<script>
+var form = new JsForm('login.php', 'POST');
+
+form.inputText('hej', 'hopp', {maxlength: 5})
+  .inputNumber('tjo', 'flöjt', {min: 0, max: 100})
+  .inputPassword(null, null)
+  .inputEmail(null, null)
+  .inputTel(null, null)
+  .inputButton(null, null)
+  .render('output');
+</script>
+</html>
