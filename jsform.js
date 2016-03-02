@@ -28,7 +28,8 @@ function JsForm(action, method) {
     'range',
     'button',
     'submit',
-    'textarea'
+    'textarea',
+    'select'
   ];
 
   var validate = function (type, attr, events) {
@@ -71,13 +72,10 @@ function JsForm(action, method) {
           return;
         }
 
-        for (var p in f) {
-          if (f.hasOwnProperty(p) && f[p]) {
-            if (p !== 'attr' && p !== 'field' && p !== 'events') {
-              element.setAttribute(p, f[p]);
-            }
-          }
+        if (f.type) {
+          element.setAttribute('type', f.type);
         }
+
 
         if (f.events) {
           for (var i = 0; i < f.events.length; i++) {
@@ -89,7 +87,19 @@ function JsForm(action, method) {
         if (f.attr) {
           for (var pr in f.attr) {
             if (f.attr.hasOwnProperty(pr) && attrWhiteList.indexOf(pr) !== -1) {
-              element.setAttribute(pr, f.attr[pr]);
+              if (pr === 'value' && typeof f.attr[pr] === 'object' && f.field === 'select') {
+                for (var prop in f.attr[pr]) {
+                  if (f.attr[pr].hasOwnProperty(prop)) {
+                    var option = document.createElement('option');
+                    option.value = prop;
+                    option.innerHTML = f.attr[pr][prop];
+                    element.appendChild(option);
+                  }
+                }
+              } else {
+                element.setAttribute(pr, f.attr[pr]);
+              }
+
             } else {
               throw new Error('You have used an attribute that is not in the whitelist: ' +
                 attrWhiteList.join(', ') + '.');
@@ -145,13 +155,13 @@ function JsForm(action, method) {
       return this;
     },
 
-    inputButton: function (attr, events) {
-      this.input('button', attr, events);
+    inputSubmit: function (attr, events) {
+      this.input('submit', attr, events);
       return this;
     },
 
-    inputSubmit: function (attr, events) {
-      this.input('submit', attr, events);
+    button: function (attr, events) {
+      this.input('button', attr, events);
       return this;
     },
 
@@ -166,8 +176,14 @@ function JsForm(action, method) {
       return this;
     },
 
-    select: function (attr) {
-      // Not yet implemented
+    select: function (attr, events) {
+      if (validate('select', attr, events)) {
+        fields.push({
+          field: 'select',
+          attr: attr,
+          events: events
+        });
+      }
       return this;
     },
 

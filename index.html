@@ -29,8 +29,11 @@ form
   .inputTel({id: 'elId5', class: 'form-control'})
   .label('Textarea')
   .textarea({class: 'form-control', rows: 5, cols: 100, placeholder: 'Write something here'})
-  .inputButton({id: 'elId6', class: 'btn btn-default', value: 'Send'},
-    [{type: 'click', callback: function () {
+  .label('Select')
+  .select({class: 'form-control', value: {abc: 'abc', def: 'def', ghj: 'ghj'}})
+  .inputSubmit({id: 'elId6', class: 'btn btn-default', value: 'Send'},
+    [{type: 'click', callback: function (e) {
+      e.preventDefault();
       console.log('Button clicked');
     }}])
   .render('output', 'form-horizontal');

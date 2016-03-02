@@ -1,4 +1,4 @@
-## JsForm
+## ~~JsForm
 An API to dynamically add forms to your website.
 
 ## Why?
@@ -6,14 +6,14 @@ Why not?
 
 ## Todo
 * Find out what attributes the different inputs have
-* Implement select
+* ~~Implement select~~
 * ~~Implement textarea~~
 * Implement checkbox
 * Implement radiobutton
-* Implement render function
+* ~~Implement render function~~
 * Add form attributes
 * Global and local whitelist?
-* Add possibility to add event to an element?
+* ~~Add possibility to add event to an element~~
 
 ## API
 
