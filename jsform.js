@@ -1,8 +1,8 @@
 'use strict';
 
 function JsForm(action, method) {
-	this.action = action;
-  this.method = method;
+	var action = action;
+  var method = method;
   var fields = [];
 
   var inputs = function (type, id, inputClass, attr) {
@@ -38,12 +38,12 @@ function JsForm(action, method) {
       }
     },
     inputText: function (id, inputClass, attr) {
-      // attr = maxlength
+      // attr = maxlength, placeholder, value
       inputs('text', id, inputClass, attr);
       return this;
     },
     inputNumber: function (id, inputClass, attr) {
-      // attr = min, max
+      // attr = min, max, placeholder, value
       inputs('number', id, inputClass, attr);
       return this;
     },
@@ -66,6 +66,16 @@ function JsForm(action, method) {
     inputSubmit: function (id, inputClass, attr) {
       inputs('submit', id, inputClass, attr);
       return this;
+    },
+    textarea: function () {
+      fields.push({
+
+      });
+    },
+    select: function () {
+      fields.push({
+
+      });
     }
 	};
 }
