@@ -53,8 +53,12 @@ function JsForm(action, method) {
       var output = document.getElementById(where);
       var form = document.createElement('form');
 
-      form.setAttribute('method', method);
-      form.setAttribute('action', action);
+      if (method) {
+        form.setAttribute('method', method);
+      }
+      if (action) {
+        form.setAttribute('action', action);
+      }
 
       if (formClass) {
         form.setAttribute('class', formClass);
