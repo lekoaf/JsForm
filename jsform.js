@@ -4,6 +4,13 @@ function JsForm(action, method) {
 	var action = action;
   var method = method;
   var fields = [];
+  var attrWhiteList = [
+    'value',
+    'placeholder',
+    'min',
+    'max',
+    'maxlength'
+  ];
 
   var inputs = function (type, id, inputClass, attr) {
     if (validateInput(id, inputClass, attr)) {
