@@ -21,15 +21,15 @@ var form = new JsForm('login.php', 'POST');
 
 form
   .label('Text')
-  .inputText('hej', 'form-control', {maxlength: 5})
+  .inputText({id: 'elId1', class: 'form-control', maxlength: 5})
   .label('Number')
-  .inputNumber('tjo', 'form-control', {min: 0, max: 100})
+  .inputNumber({id: 'elId2', class: 'form-control', min: 0, max: 100})
   .label('Password')
-  .inputPassword(null, 'form-control', {placeholder: 'Password', value: 'hunter2'})
+  .inputPassword({id: 'elId3', class: 'form-control', placeholder: 'Password', value: 'hunter2'})
   .label('Email')
-  .inputEmail(null, 'form-control')
-  .label('Phone')
-  .inputTel(null, 'form-control')
-  .inputButton(null, 'btn btn-default', {value: 'Send'})
+  .inputEmail({id: 'elId4', class: 'form-control'})
+  .label('Phone', 'elId5')
+  .inputTel({id: 'elId5', class: 'form-control'})
+  .inputButton({id: 'elId6', class: 'btn btn-default', value: 'Send'})
   .render('output', 'form-horizontal');
  ```
