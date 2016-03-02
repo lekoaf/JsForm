@@ -1,4 +1,4 @@
-## JsForm
+# JsForm
 An API to dynamically add forms to your website.
 
 ## Why?
