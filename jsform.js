@@ -15,7 +15,9 @@ function JsForm(action, method) {
     'width',
     'step',
     'id',
-    'class'
+    'class',
+    'rows',
+    'cols'
   ];
   var inputTypeWhiteList = [
     'text',
@@ -45,8 +47,10 @@ function JsForm(action, method) {
       }
       var output = document.getElementById(where);
       var form = document.createElement('form');
+
       form.setAttribute('method', method);
       form.setAttribute('action', action);
+
       if (formClass) {
         form.setAttribute('class', formClass);
       }
@@ -126,7 +130,8 @@ function JsForm(action, method) {
     },
 
     inputRange: function () {
-
+      // Not yet implemented
+      return this;
     },
 
     inputButton: function (attr) {
@@ -139,19 +144,29 @@ function JsForm(action, method) {
       return this;
     },
 
-    textarea: function () {
+    textarea: function (attr) {
       fields.push({
-
+        field: 'textarea',
+        attr: attr
       });
       return this;
     },
 
-    select: function () {
-      fields.push({
-
-      });
+    select: function (attr) {
+      // Not yet implemented
       return this;
     },
+
+    checkbox: function (attr) {
+      // Not yet implemented
+      return this;
+    },
+
+    radio: function (attr) {
+      // Not yet implemented
+      return this;
+    },
+
     label: function (str, labelFor) {
       fields.push({
         field: 'label',

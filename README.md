@@ -7,12 +7,13 @@ Why not?
 ## Todo
 * Find out what attributes the different inputs have
 * Implement select
-* Implement textarea
+* ~~Implement textarea~~
 * Implement checkbox
 * Implement radiobutton
 * Implement render function
 * Add form attributes
 * Global and local whitelist?
+* Add possibility to add event to an element?
 
 ## API
 
@@ -30,6 +31,8 @@ form
   .inputEmail({id: 'elId4', class: 'form-control'})
   .label('Phone', 'elId5')
   .inputTel({id: 'elId5', class: 'form-control'})
+  .label('Textarea')
+  .textarea({class: 'form-control', rows: 5, cols: 100, placeholder: 'Write something here'})
   .inputButton({id: 'elId6', class: 'btn btn-default', value: 'Send'})
   .render('output', 'form-horizontal');
  ```
