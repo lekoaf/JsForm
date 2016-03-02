@@ -2,21 +2,22 @@
 <html>
 <head>
 	<title></title>
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 </head>
 <body>
-	<div id="output">
+	<div id="output" class="container">
   </div>
 </body>
 <script src="jsform.js"></script>
 <script>
 var form = new JsForm('login.php', 'POST');
 
-form.inputText('hej', 'hopp', {maxlength: 5})
-  .inputNumber('tjo', 'flöjt', {min: 0, max: 100})
-  .inputPassword(null, null)
-  .inputEmail(null, null)
-  .inputTel(null, null)
-  .inputButton(null, null)
+form.inputText('hej', 'form-control', {maxlength: 5})
+  .inputNumber('tjo', 'form-control', {min: 0, max: 100})
+  .inputPassword(null, 'form-control', {placeholder: 'Password', value: 'hunter2'})
+  .inputEmail(null, 'form-control')
+  .inputTel(null, 'form-control')
+  .inputButton(null, 'btn btn-default', {value: 'Send'})
   .render('output');
 </script>
 </html>

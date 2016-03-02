@@ -33,9 +33,17 @@ function JsForm(action, method) {
 	return {
     render: function (where, formClass) {
       var output = document.getElementById(where);
-      for (var i = 0; i < fields.length; i++) {
-        console.log(fields[i]);
-      }
+
+      fields.forEach(function (f) {
+        var element = document.createElement(f.field);
+        f.type && element.setAttribute('type', f.type);
+        f.id && element.setAttribute('id', f.id);
+        f.class && element.setAttribute('class', f.class);
+
+        // Attributes
+        f.attr && f.attr.value && element.setAttribute('value', f.attr.value);
+        output.appendChild(element);
+      });
     },
     inputText: function (id, inputClass, attr) {
       // attr = maxlength, placeholder, value
