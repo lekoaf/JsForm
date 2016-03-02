@@ -27,12 +27,13 @@ function JsForm(action, method) {
     'tel',
     'range',
     'button',
-    'submit'
+    'submit',
+    'textarea'
   ];
 
-  var validateInput = function (type, attr) {
+  var validate = function (type, attr) {
     if (inputTypeWhiteList.indexOf(type) === -1) {
-      throw new Error('Inproper type used');
+      throw new Error('Inproper type used: ' + type);
     }
     if (attr !== undefined && typeof attr !== 'object' || Array.isArray(attr)) {
       throw new Error('Attributes must be an object or undefined');
@@ -92,7 +93,7 @@ function JsForm(action, method) {
       output.appendChild(form);
     },
     input: function (type, attr) {
-      if (validateInput(type, attr)) {
+      if (validate(type, attr)) {
         fields.push({
           field: 'input',
           type: type,
@@ -145,10 +146,12 @@ function JsForm(action, method) {
     },
 
     textarea: function (attr) {
-      fields.push({
-        field: 'textarea',
-        attr: attr
-      });
+      if (validate('textarea', attr)) {
+        fields.push({
+          field: 'textarea',
+          attr: attr
+        });
+      }
       return this;
     },
 
