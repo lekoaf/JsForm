@@ -134,5 +134,6 @@ Feel free to help out if you like with:
 * Refactor my ugly source code
 * Add new features
 * Turn it in to an NPM / Bower package?
+* Create GH-page with some nice examples
 * Bug fixing
 * Typos
