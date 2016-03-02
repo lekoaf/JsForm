@@ -37,7 +37,7 @@ function JsForm(action, method) {
     return true;
   };
 
-	return {
+  return {
     render: function (where, formClass) {
       if (!where) {
         throw new Error('You need to specify an element id where you want to attach the form');
@@ -114,7 +114,7 @@ function JsForm(action, method) {
       });
       return this;
     }
-	};
+  };
 }
 
 /*
