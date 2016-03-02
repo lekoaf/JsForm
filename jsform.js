@@ -128,13 +128,11 @@ function JsForm(action, method) {
     },
 
     inputText: function (attr, events) {
-      // attr = maxlength, placeholder, value
       this.input('text', attr, events);
       return this;
     },
 
     inputNumber: function (attr, events) {
-      // attr = min, max, placeholder, value
       this.input('number', attr, events);
       return this;
     },
@@ -154,8 +152,7 @@ function JsForm(action, method) {
       return this;
     },
 
-    inputRange: function () {
-      // Not yet implemented
+    inputRange: function (attr, events) {
       return this;
     },
 
@@ -191,13 +188,11 @@ function JsForm(action, method) {
       return this;
     },
 
-    checkbox: function (attr) {
-      // Not yet implemented
+    checkbox: function (attr, events) {
       return this;
     },
 
-    radio: function (attr) {
-      // Not yet implemented
+    radio: function (attr, events) {
       return this;
     },
 
@@ -211,23 +206,3 @@ function JsForm(action, method) {
     }
   };
 }
-
-/*
-
-input:
-  text
-  number
-  password
-  submit
-  radio
-  checkbox
-  button
-  color
-  email
-  tel
-  range
-
-select
-textarea
-
-*/
