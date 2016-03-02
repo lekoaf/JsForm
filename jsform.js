@@ -31,12 +31,15 @@ function JsForm(action, method) {
     'textarea'
   ];
 
-  var validate = function (type, attr) {
+  var validate = function (type, attr, events) {
     if (inputTypeWhiteList.indexOf(type) === -1) {
       throw new Error('Inproper type used: ' + type);
     }
     if (attr !== undefined && typeof attr !== 'object' || Array.isArray(attr)) {
       throw new Error('Attributes must be an object or undefined');
+    }
+    if (events && !Array.isArray(events)) {
+      throw new Error('Events needs to be an array of objects.');
     }
     return true;
   };
@@ -70,9 +73,15 @@ function JsForm(action, method) {
 
         for (var p in f) {
           if (f.hasOwnProperty(p) && f[p]) {
-            if (p !== 'attr' && p !== 'field') {
+            if (p !== 'attr' && p !== 'field' && p !== 'events') {
               element.setAttribute(p, f[p]);
             }
+          }
+        }
+
+        if (f.events) {
+          for (var i = 0; i < f.events.length; i++) {
+            element.addEventListener(f.events[i].type, f.events[i].callback, true);
           }
         }
 
@@ -92,41 +101,42 @@ function JsForm(action, method) {
       });
       output.appendChild(form);
     },
-    input: function (type, attr) {
-      if (validate(type, attr)) {
+    input: function (type, attr, events) {
+      if (validate(type, attr, events)) {
         fields.push({
           field: 'input',
           type: type,
-          attr: attr
+          attr: attr,
+          events: events
         });
       }
       return this;
     },
 
-    inputText: function (attr) {
+    inputText: function (attr, events) {
       // attr = maxlength, placeholder, value
-      this.input('text', attr);
+      this.input('text', attr, events);
       return this;
     },
 
-    inputNumber: function (attr) {
+    inputNumber: function (attr, events) {
       // attr = min, max, placeholder, value
-      this.input('number', attr);
+      this.input('number', attr, events);
       return this;
     },
 
-    inputPassword: function (attr) {
-      this.input('password', attr);
+    inputPassword: function (attr, events) {
+      this.input('password', attr, events);
       return this;
     },
 
-    inputEmail: function (attr) {
-      this.input('email', attr);
+    inputEmail: function (attr, events) {
+      this.input('email', attr, events);
       return this;
     },
 
-    inputTel: function (attr) {
-      this.input('tel', attr);
+    inputTel: function (attr, events) {
+      this.input('tel', attr, events);
       return this;
     },
 
@@ -135,21 +145,22 @@ function JsForm(action, method) {
       return this;
     },
 
-    inputButton: function (attr) {
-      this.input('button', attr);
+    inputButton: function (attr, events) {
+      this.input('button', attr, events);
       return this;
     },
 
-    inputSubmit: function (attr) {
-      this.input('submit', attr);
+    inputSubmit: function (attr, events) {
+      this.input('submit', attr, events);
       return this;
     },
 
-    textarea: function (attr) {
-      if (validate('textarea', attr)) {
+    textarea: function (attr, events) {
+      if (validate('textarea', attr, events)) {
         fields.push({
           field: 'textarea',
-          attr: attr
+          attr: attr,
+          events: events
         });
       }
       return this;
