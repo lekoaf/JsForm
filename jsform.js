@@ -13,22 +13,25 @@ function JsForm(action, method) {
     'size',
     'height',
     'width',
-    'step'
+    'step',
+    'id',
+    'class'
+  ];
+  var inputTypeWhiteList = [
+    'text',
+    'number',
+    'password',
+    'email',
+    'tel',
+    'range',
+    'button',
+    'submit'
   ];
 
-  var inputs = function (type, id, inputClass, attr) {
-    if (validateInput(id, inputClass, attr)) {
-      fields.push({
-        field: 'input',
-        type: type,
-        id: id,
-        class: inputClass,
-        attr: attr
-      });
+  var validateInput = function (type, id, inputClass, attr) {
+    if (inputTypeWhiteList.indexOf(type) === -1) {
+      throw new Error('Inproper type used');
     }
-  }.bind(this);
-
-  var validateInput = function (id, inputClass, attr) {
     if (typeof id !== 'string' && id !== null) {
       throw new Error('ID must be either null or a string');
     }
@@ -57,6 +60,15 @@ function JsForm(action, method) {
       fields.forEach(function (f) {
         var element = document.createElement(f.field);
 
+        if (f.field == 'label') {
+          element.innerHTML = f.text;
+          if (f.for) {
+            element.setAttribute('for', f.for);
+          }
+          form.appendChild(element);
+          return;
+        }
+
         for (var p in f) {
           if (f.hasOwnProperty(p) && f[p]) {
             if (p !== 'attr' && p !== 'field') {
@@ -81,30 +93,43 @@ function JsForm(action, method) {
       });
       output.appendChild(form);
     },
+    input: function (type, id, inputClass, attr) {
+      if (validateInput(type, id, inputClass, attr)) {
+        fields.push({
+          field: 'input',
+          type: type,
+          id: id,
+          class: inputClass,
+          attr: attr
+        });
+      }
+      return this;
+    },
+
     inputText: function (id, inputClass, attr) {
       // attr = maxlength, placeholder, value
-      inputs('text', id, inputClass, attr);
+      this.input('text', id, inputClass, attr);
       return this;
     },
 
     inputNumber: function (id, inputClass, attr) {
       // attr = min, max, placeholder, value
-      inputs('number', id, inputClass, attr);
+      this.input('number', id, inputClass, attr);
       return this;
     },
 
     inputPassword: function (id, inputClass, attr) {
-      inputs('password', id, inputClass, attr);
+      this.input('password', id, inputClass, attr);
       return this;
     },
 
     inputEmail: function (id, inputClass, attr) {
-      inputs('email', id, inputClass, attr);
+      this.input('email', id, inputClass, attr);
       return this;
     },
 
     inputTel: function (id, inputClass, attr) {
-      inputs('tel', id, inputClass, attr);
+      this.input('tel', id, inputClass, attr);
       return this;
     },
 
@@ -113,12 +138,12 @@ function JsForm(action, method) {
     },
 
     inputButton: function (id, inputClass, attr) {
-      inputs('button', id, inputClass, attr);
+      this.input('button', id, inputClass, attr);
       return this;
     },
 
     inputSubmit: function (id, inputClass, attr) {
-      inputs('submit', id, inputClass, attr);
+      this.input('submit', id, inputClass, attr);
       return this;
     },
 
@@ -132,6 +157,14 @@ function JsForm(action, method) {
     select: function () {
       fields.push({
 
+      });
+      return this;
+    },
+    label: function (str, f) {
+      fields.push({
+        field: 'label',
+        text: str,
+        for: f
       });
       return this;
     }

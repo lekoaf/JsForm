@@ -19,10 +19,16 @@ Why not?
 ```Javascript
 var form = new JsForm('login.php', 'POST');
 
-form.inputText('hej', 'form-control', {maxlength: 5})
+form
+  .label('Text')
+  .inputText('hej', 'form-control', {maxlength: 5})
+  .label('Number')
   .inputNumber('tjo', 'form-control', {min: 0, max: 100})
+  .label('Password')
   .inputPassword(null, 'form-control', {placeholder: 'Password', value: 'hunter2'})
+  .label('Email')
   .inputEmail(null, 'form-control')
+  .label('Phone')
   .inputTel(null, 'form-control')
   .inputButton(null, 'btn btn-default', {value: 'Send'})
   .render('output', 'form-horizontal');
