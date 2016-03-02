@@ -1,7 +1,7 @@
 'use strict';
 
 function JsForm(action, method) {
-	var action = action;
+  var action = action;
   var method = method;
   var fields = [];
   var attrWhiteList = [
