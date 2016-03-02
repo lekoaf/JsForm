@@ -32,7 +32,14 @@ function JsForm(action, method) {
 
 	return {
     render: function (where, formClass) {
+      if (!where) {
+        throw new Error('You need to specify an element id where you want to attach the form');
+      }
       var output = document.getElementById(where);
+      var form = document.createElement('form');
+      form.setAttribute('method', method)
+      form.setAttribute('action', action);
+      formClass && form.setAttribute('class', formClass);
 
       fields.forEach(function (f) {
         var element = document.createElement(f.field);
@@ -40,50 +47,65 @@ function JsForm(action, method) {
         f.id && element.setAttribute('id', f.id);
         f.class && element.setAttribute('class', f.class);
 
-        // Attributes
+        // Attributes - Perhaps loop through them?
         f.attr && f.attr.value && element.setAttribute('value', f.attr.value);
-        output.appendChild(element);
+        form.appendChild(element);
       });
+      output.appendChild(form);
     },
     inputText: function (id, inputClass, attr) {
       // attr = maxlength, placeholder, value
       inputs('text', id, inputClass, attr);
       return this;
     },
+
     inputNumber: function (id, inputClass, attr) {
       // attr = min, max, placeholder, value
       inputs('number', id, inputClass, attr);
       return this;
     },
+
     inputPassword: function (id, inputClass, attr) {
       inputs('password', id, inputClass, attr);
       return this;
     },
+
     inputEmail: function (id, inputClass, attr) {
       inputs('email', id, inputClass, attr);
       return this;
     },
+
     inputTel: function (id, inputClass, attr) {
       inputs('tel', id, inputClass, attr);
       return this;
     },
+
+    inputRange: function () {
+
+    },
+
     inputButton: function (id, inputClass, attr) {
       inputs('button', id, inputClass, attr);
       return this;
     },
+
     inputSubmit: function (id, inputClass, attr) {
       inputs('submit', id, inputClass, attr);
       return this;
     },
+
     textarea: function () {
       fields.push({
 
       });
+      return this;
     },
+
     select: function () {
       fields.push({
 
       });
+      return this;
     }
 	};
 }

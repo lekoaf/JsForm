@@ -5,7 +5,11 @@
   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 </head>
 <body>
-	<div id="output" class="container">
+  <div class="container">
+    <div class="row">
+      <div id="output" class="col-md-4">
+      </div>
+    </div>
   </div>
 </body>
 <script src="jsform.js"></script>
@@ -18,6 +22,6 @@ form.inputText('hej', 'form-control', {maxlength: 5})
   .inputEmail(null, 'form-control')
   .inputTel(null, 'form-control')
   .inputButton(null, 'btn btn-default', {value: 'Send'})
-  .render('output');
+  .render('output', 'form-horizontal');
 </script>
 </html>
