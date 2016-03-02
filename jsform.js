@@ -1,8 +1,6 @@
 'use strict';
 
 function JsForm(action, method) {
-  var action = action;
-  var method = method;
   var fields = [];
   var attrWhiteList = [
     'value',
@@ -50,21 +48,28 @@ function JsForm(action, method) {
       }
       var output = document.getElementById(where);
       var form = document.createElement('form');
-      form.setAttribute('method', method)
+      form.setAttribute('method', method);
       form.setAttribute('action', action);
-      formClass && form.setAttribute('class', formClass);
+      if (formClass) {
+        form.setAttribute('class', formClass);
+      }
 
       fields.forEach(function (f) {
         var element = document.createElement(f.field);
-        f.type && element.setAttribute('type', f.type);
-        f.id && element.setAttribute('id', f.id);
-        f.class && element.setAttribute('class', f.class);
+
+        for (var p in f) {
+          if (f.hasOwnProperty(p) && f[p]) {
+            if (p !== 'attr' && p !== 'field') {
+              element.setAttribute(p, f[p]);
+            }
+          }
+        }
 
         // Attributes
         if (f.attr) {
-          for (var p in f.attr) {
-            if (f.attr.hasOwnProperty(p) && attrWhiteList.indexOf(p) !== -1) {
-              element.setAttribute(p, f.attr[p]);
+          for (var pr in f.attr) {
+            if (f.attr.hasOwnProperty(pr) && attrWhiteList.indexOf(pr) !== -1) {
+              element.setAttribute(pr, f.attr[pr]);
             } else {
               throw new Error('You have used an attribute that is not in the whitelist: ' +
                 attrWhiteList.join(', ') + '.');
