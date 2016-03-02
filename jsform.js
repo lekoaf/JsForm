@@ -9,7 +9,13 @@ function JsForm(action, method) {
     'placeholder',
     'min',
     'max',
-    'maxlength'
+    'maxlength',
+    'disabled',
+    'readonly',
+    'size',
+    'height',
+    'width',
+    'step'
   ];
 
   var inputs = function (type, id, inputClass, attr) {
@@ -54,8 +60,18 @@ function JsForm(action, method) {
         f.id && element.setAttribute('id', f.id);
         f.class && element.setAttribute('class', f.class);
 
-        // Attributes - Perhaps loop through them?
-        f.attr && f.attr.value && element.setAttribute('value', f.attr.value);
+        // Attributes
+        if (f.attr) {
+          for (var p in f.attr) {
+            if (f.attr.hasOwnProperty(p) && attrWhiteList.indexOf(p) !== -1) {
+              element.setAttribute(p, f.attr[p]);
+            } else {
+              throw new Error('You have used an attribute that is not in the whitelist: ' +
+                attrWhiteList.join(', ') + '.');
+            }
+          }
+        }
+
         form.appendChild(element);
       });
       output.appendChild(form);

@@ -7,8 +7,11 @@ Why not?
 * Find out what attributes the different inputs have
 * Implement select
 * Implement textarea
+* Implement checkbox
+* Implement radiobutton
 * Implement render function
 * Add form attributes
+* Global and local whitelist?
 
 ```Javascript
 var form = new JsForm('login.php', 'POST');
