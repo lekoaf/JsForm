@@ -1,10 +1,12 @@
 var gulp = require('gulp');
 var minify = require('gulp-minify');
+var plumber = require('gulp-plumber');
 
 gulp.task('default', ['minify']);
 
 gulp.task('minify', function() {
   gulp.src('src/jsform.js')
+    .pipe(plumber())
     .pipe(minify({
         ext:{
             min:'.min.js'
