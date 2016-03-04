@@ -17,7 +17,8 @@ function JsForm(action, method) {
     'id',
     'class',
     'rows',
-    'cols'
+    'cols',
+    'name'
   ];
   var inputTypeWhiteList = [
     'text',
@@ -29,7 +30,8 @@ function JsForm(action, method) {
     'button',
     'submit',
     'textarea',
-    'select'
+    'select',
+    'hidden'
   ];
 
   var validate = function (type, attr, events) {
@@ -159,6 +161,11 @@ function JsForm(action, method) {
     inputSubmit: function (attr, events) {
       this.input('submit', attr, events);
       return this;
+    },
+
+    inputHidden: function (attr, events) {
+      this.input('hidden', attr, events);
+      return  this;
     },
 
     button: function (attr, events) {
