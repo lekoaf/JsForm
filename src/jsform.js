@@ -3,35 +3,35 @@
 function JsForm(action, method) {
   var fields = [];
   var attrWhiteList = [
-    'value',
-    'placeholder',
-    'min',
+    'disabled',
+    'class',
+    'cols',
+    'height',
+    'id',
     'max',
     'maxlength',
-    'disabled',
+    'min',
+    'name',
+    'placeholder',
     'readonly',
-    'size',
-    'height',
-    'width',
-    'step',
-    'id',
-    'class',
     'rows',
-    'cols',
-    'name'
+    'size',
+    'step',
+    'value',
+    'width',
   ];
   var inputTypeWhiteList = [
-    'text',
+    'button',
+    'email',
+    'hidden',
     'number',
     'password',
-    'email',
-    'tel',
     'range',
-    'button',
-    'submit',
-    'textarea',
     'select',
-    'hidden'
+    'submit',
+    'tel',
+    'text',
+    'textarea',
   ];
 
   var validate = function (type, attr, events) {
@@ -117,6 +117,16 @@ function JsForm(action, method) {
       });
       output.appendChild(form);
     },
+
+    button: function (attr, events) {
+      // this.input('button', attr, events);
+      return this;
+    },
+
+    checkbox: function (attr, events) {
+      return this;
+    },
+
     input: function (type, attr, events) {
       if (validate(type, attr, events)) {
         fields.push({
@@ -129,9 +139,14 @@ function JsForm(action, method) {
       return this;
     },
 
-    inputText: function (attr, events) {
-      this.input('text', attr, events);
+    inputEmail: function (attr, events) {
+      this.input('email', attr, events);
       return this;
+    },
+
+    inputHidden: function (attr, events) {
+      this.input('hidden', attr, events);
+      return  this;
     },
 
     inputNumber: function (attr, events) {
@@ -144,16 +159,6 @@ function JsForm(action, method) {
       return this;
     },
 
-    inputEmail: function (attr, events) {
-      this.input('email', attr, events);
-      return this;
-    },
-
-    inputTel: function (attr, events) {
-      this.input('tel', attr, events);
-      return this;
-    },
-
     inputRange: function (attr, events) {
       return this;
     },
@@ -163,24 +168,26 @@ function JsForm(action, method) {
       return this;
     },
 
-    inputHidden: function (attr, events) {
-      this.input('hidden', attr, events);
-      return  this;
-    },
-
-    button: function (attr, events) {
-      this.input('button', attr, events);
+    inputTel: function (attr, events) {
+      this.input('tel', attr, events);
       return this;
     },
 
-    textarea: function (attr, events) {
-      if (validate('textarea', attr, events)) {
-        fields.push({
-          field: 'textarea',
-          attr: attr,
-          events: events
-        });
-      }
+    inputText: function (attr, events) {
+      this.input('text', attr, events);
+      return this;
+    },
+
+    label: function (str, labelFor) {
+      fields.push({
+        field: 'label',
+        text: str,
+        for: labelFor
+      });
+      return this;
+    },
+
+    radio: function (attr, events) {
       return this;
     },
 
@@ -195,21 +202,15 @@ function JsForm(action, method) {
       return this;
     },
 
-    checkbox: function (attr, events) {
+    textarea: function (attr, events) {
+      if (validate('textarea', attr, events)) {
+        fields.push({
+          field: 'textarea',
+          attr: attr,
+          events: events
+        });
+      }
       return this;
     },
-
-    radio: function (attr, events) {
-      return this;
-    },
-
-    label: function (str, labelFor) {
-      fields.push({
-        field: 'label',
-        text: str,
-        for: labelFor
-      });
-      return this;
-    }
   };
 }
