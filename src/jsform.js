@@ -4,6 +4,7 @@ function JsForm(action, method) {
   var fields = [];
   var attrWhiteList = [
     'disabled',
+    'checked',
     'class',
     'cols',
     'height',
@@ -18,20 +19,22 @@ function JsForm(action, method) {
     'size',
     'step',
     'value',
-    'width',
+    'width'
   ];
   var inputTypeWhiteList = [
     'button',
+    'checkbox',
     'email',
     'hidden',
     'number',
     'password',
+    'radio',
     'range',
     'select',
     'submit',
     'tel',
     'text',
-    'textarea',
+    'textarea'
   ];
 
   var validate = function (type, attr, events) {
@@ -123,10 +126,6 @@ function JsForm(action, method) {
       return this;
     },
 
-    checkbox: function (attr, events) {
-      return this;
-    },
-
     input: function (type, attr, events) {
       if (validate(type, attr, events)) {
         fields.push({
@@ -136,6 +135,11 @@ function JsForm(action, method) {
           events: events
         });
       }
+      return this;
+    },
+
+    inputCheckbox: function (attr, events) {
+      this.input('checkbox', attr, events);
       return this;
     },
 
@@ -156,6 +160,11 @@ function JsForm(action, method) {
 
     inputPassword: function (attr, events) {
       this.input('password', attr, events);
+      return this;
+    },
+
+    inputRadio: function (attr, events) {
+      this.input('radio', attr, events);
       return this;
     },
 
@@ -188,10 +197,6 @@ function JsForm(action, method) {
       return this;
     },
 
-    radio: function (attr, events) {
-      return this;
-    },
-
     select: function (attr, events) {
       if (validate('select', attr, events)) {
         fields.push({
@@ -212,6 +217,6 @@ function JsForm(action, method) {
         });
       }
       return this;
-    },
+    }
   };
 }

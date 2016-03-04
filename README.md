@@ -38,7 +38,7 @@ form
   .label('Last name')
   .inputText({id: 'myTextField2', class: 'inputClass', maxlength: 25, value: 'Doh'});
 ```
-There is also number, password, email, phone, hidden, range and submit input fields. Like this:
+There is also number, password, email, phone, hidden, range, checkbox, radio and submit input fields. Like this:
 ```Javascript
 form
   .inputText({id: 'myTextField', class: 'inputClass', maxlength: 25, value: 'John'})
@@ -48,6 +48,9 @@ form
   .inputTel({id: 'myTelField', class: 'inputClass', placeholder: 'Phone number', disabled: 'disabled'})
   .inputHidden({name: 'myHiddenInput', value: 'imhidden'})
   .inputRange({id: 'myRangeInput', step: 1, min: 1, max: 100})
+  .inputCheckbox({id: 'myCheckbox', checked: 'checked'})
+  .inputRadio({id: 'myRadio1', name: 'radiobutton', checked: 'checked'})
+  .inputRadio({id: 'myRadio2', name: 'radiobutton'})
   .inputSubmit({id: 'mySubmitButton', class: 'btn', value: 'Send'});
 ```
 Don't feel like remembering long function names? Just use ```input()``` and specify a type as the first argument.
@@ -124,8 +127,8 @@ divToPutThisIn.appendChild(form);
 
 ### More to come
 Things to be added are, among others:
-* Implement checkboxes
-* Implement radiobuttons
+* ~~Implement checkboxes~~
+* ~~Implement radiobuttons~~
 * Implement ```<button>```
 * ~~Implement range slider~~
 * Find out what attributes the different inputs have and add to the white list
