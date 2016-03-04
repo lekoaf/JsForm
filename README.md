@@ -6,6 +6,9 @@ Why not?
 
 ## Install
 ```bower install jsform-api```
+```html
+<script src="bower_components/jsform-api/src/jsform.js"></script>
+```
 
 ## API
 
@@ -136,7 +139,7 @@ Feel free to help out if you like with:
 * Gulp script to minify the source code and other fun stuff
 * Refactor my ugly source code
 * Add new features
-* Turn it in to an NPM / Bower package?
+* Turn it in to an NPM / ~~Bower~~ package?
 * Create GH-page with some nice examples
 * Bug fixing
 * Typos
