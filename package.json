@@ -1,0 +1,30 @@
+{
+  "name": "jsform",
+  "version": "0.4.0",
+  "description": "An api to dynamically add forms to your website",
+  "main": "src/jsform.js",
+  "dependencies": {},
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-minify": "0.0.5"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lekoaf/JsForm.git"
+  },
+  "keywords": [
+    "javascript",
+    "html",
+    "form",
+    "input"
+  ],
+  "author": "Martin Trobäck",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lekoaf/JsForm/issues"
+  },
+  "homepage": "https://github.com/lekoaf/JsForm"
+}
