@@ -28,6 +28,8 @@ form
   .label('Phone', 'elId5')
   .inputTel({id: 'elId5', class: 'form-control'})
   .inputHidden({name: 'hiddeninput', value: 'imhidden'})
+  .label('Range')
+  .inputRange({id: 'rangeInput', step: 1, min: 1, max: 100})
   .label('Textarea')
   .textarea({class: 'form-control', rows: 5, cols: 100, placeholder: 'Write something here'})
   .label('Select')

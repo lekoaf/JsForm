@@ -160,6 +160,7 @@ function JsForm(action, method) {
     },
 
     inputRange: function (attr, events) {
+      this.input('range', attr, events);
       return this;
     },
 

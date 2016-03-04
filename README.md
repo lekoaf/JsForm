@@ -38,7 +38,7 @@ form
   .label('Last name')
   .inputText({id: 'myTextField2', class: 'inputClass', maxlength: 25, value: 'Doh'});
 ```
-There is also number, password, email, phone, hidden and submit input fields. Like this:
+There is also number, password, email, phone, hidden, range and submit input fields. Like this:
 ```Javascript
 form
   .inputText({id: 'myTextField', class: 'inputClass', maxlength: 25, value: 'John'})
@@ -46,7 +46,8 @@ form
   .inputPassword({id: 'myPasswordField', class: 'inputClass', placeholder: 'Password', value: 'hunter2'})
   .inputEmail({id: 'myEmailField', class: 'inputClass', value: 'john@doh.com'})
   .inputTel({id: 'myTelField', class: 'inputClass', placeholder: 'Phone number', disabled: 'disabled'})
-  .inputHidden({name: 'hiddeninput', value: 'imhidden'})
+  .inputHidden({name: 'myHiddenInput', value: 'imhidden'})
+  .inputRange({id: 'myRangeInput', step: 1, min: 1, max: 100})
   .inputSubmit({id: 'mySubmitButton', class: 'btn', value: 'Send'});
 ```
 Don't feel like remembering long function names? Just use ```input()``` and specify a type as the first argument.
