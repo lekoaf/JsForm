@@ -1,9 +1,9 @@
 var gulp = require('gulp');
 var minify = require('gulp-minify');
 
-gulp.task('default', ['compress']);
+gulp.task('default', ['minify']);
 
-gulp.task('compress', function() {
+gulp.task('minify', function() {
   gulp.src('src/jsform.js')
     .pipe(minify({
         ext:{
@@ -12,4 +12,8 @@ gulp.task('compress', function() {
         ignoreFiles: ['jsform.min.js']
     }))
     .pipe(gulp.dest('src'))
+});
+
+gulp.task('watch', function () {
+  gulp.watch('src/jsform.js', ['minify']);
 });
