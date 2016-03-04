@@ -1,6 +1,6 @@
 {
   "name": "jsform-api",
-  "main": "jsform.js",
+  "main": "src/jsform.js",
   "homepage": "https://github.com/lekoaf/JsForm",
   "authors": [
     "Martin Trobäck <martin.troback@outlook.com>"
