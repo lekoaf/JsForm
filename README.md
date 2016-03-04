@@ -4,6 +4,9 @@ An API to dynamically add forms to your website.
 ## Why?
 Why not?
 
+## Install
+```bower install jsform-api```
+
 ## API
 
 ### Start
