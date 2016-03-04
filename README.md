@@ -127,7 +127,7 @@ Things to be added are, among others:
 * Implement checkboxes
 * Implement radiobuttons
 * Implement ```<button>```
-* Implement range slider
+* ~~Implement range slider~~
 * Find out what attributes the different inputs have and add to the white list
 * Add form attributes
 * Research which is better, appendChild vs insertAdjacentHTML
