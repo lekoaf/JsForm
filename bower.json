@@ -1,0 +1,26 @@
+{
+  "name": "jsform-api",
+  "main": "jsform.js",
+  "homepage": "https://github.com/lekoaf/JsForm",
+  "authors": [
+    "Martin Trobäck <martin.troback@outlook.com>"
+  ],
+  "description": "A javascript API to dynamically add forms",
+  "moduleType": [],
+  "keywords": [
+    "javascript",
+    "html",
+    "form",
+    "input",
+    "select",
+    "textarea"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
