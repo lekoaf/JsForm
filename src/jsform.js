@@ -24,6 +24,7 @@ function JsForm(action, method) {
   var fieldWhiteList = [
     'button',
     'checkbox',
+    'color',
     'email',
     'hidden',
     'number',
@@ -156,6 +157,11 @@ function JsForm(action, method) {
 
     inputCheckbox: function (attr, events) {
       this.input('checkbox', attr, events);
+      return this;
+    },
+
+    inputColor: function (attr, events) {
+      this.input('color', attr, events);
       return this;
     },
 

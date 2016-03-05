@@ -4,7 +4,7 @@
 	<title></title>
   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <style>
-  #radio1, #radio2, #cbox1 {
+  #radio1, #radio2, #cbox1, #myColorInput {
     display: block;
   }
   </style>
@@ -12,6 +12,7 @@
 <body>
   <div class="container">
     <div class="row">
+      <h3>This file is just for testing purposes.</h3>
       <div id="output" class="col-md-4">
       </div>
     </div>
@@ -44,6 +45,8 @@ form
   .textarea({class: 'form-control', rows: 5, cols: 100, placeholder: 'Write something here'})
   .label('Select')
   .select({class: 'form-control', value: {abc: 'abc', def: 'def', ghj: 'ghj'}})
+  .label('Color')
+  .inputColor({id: 'myColorInput', class: 'myColorClass', value: '#FFFFFF'})
   .inputSubmit({id: 'elId6', class: 'btn btn-default', value: 'Send'},
     [{type: 'click', callback: function (e) {
       e.preventDefault();

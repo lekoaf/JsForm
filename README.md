@@ -38,7 +38,7 @@ form
   .label('Last name')
   .inputText({id: 'myTextField2', class: 'inputClass', maxlength: 25, value: 'Doh'});
 ```
-There is also number, password, email, phone, hidden, range, checkbox, radio, submit and button input fields. Like this:
+There is also number, password, email, phone, hidden, range, checkbox, radio, color, submit and button input fields. Like this:
 ```Javascript
 form
   .inputText({id: 'myTextField', class: 'inputClass', maxlength: 25, value: 'John'})
@@ -51,6 +51,7 @@ form
   .inputCheckbox({id: 'myCheckbox', checked: 'checked'})
   .inputRadio({id: 'myRadio1', name: 'radiobutton', checked: 'checked'})
   .inputRadio({id: 'myRadio2', name: 'radiobutton'})
+  .inputColor({id: 'myColorInput', value: '#FFFFFF'})
   .inputSubmit({id: 'mySubmitButton', class: 'btn', value: 'Send'})
   .inputButton({id: 'myCancelButton', class: 'btn', value: 'Cancel'});
 ```
