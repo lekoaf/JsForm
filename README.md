@@ -38,7 +38,7 @@ form
   .label('Last name')
   .inputText({id: 'myTextField2', class: 'inputClass', maxlength: 25, value: 'Doh'});
 ```
-There is also number, password, email, phone, hidden, range, checkbox, radio and submit input fields. Like this:
+There is also number, password, email, phone, hidden, range, checkbox, radio, submit and button input fields. Like this:
 ```Javascript
 form
   .inputText({id: 'myTextField', class: 'inputClass', maxlength: 25, value: 'John'})
@@ -51,7 +51,8 @@ form
   .inputCheckbox({id: 'myCheckbox', checked: 'checked'})
   .inputRadio({id: 'myRadio1', name: 'radiobutton', checked: 'checked'})
   .inputRadio({id: 'myRadio2', name: 'radiobutton'})
-  .inputSubmit({id: 'mySubmitButton', class: 'btn', value: 'Send'});
+  .inputSubmit({id: 'mySubmitButton', class: 'btn', value: 'Send'})
+  .inputButton({id: 'myCancelButton', class: 'btn', value: 'Cancel'});
 ```
 Don't feel like remembering long function names? Just use ```input()``` and specify a type as the first argument.
 ```Javascript
@@ -79,6 +80,14 @@ The select is slightly different. Since we want to add a bunch of options we nee
 ```Javascript
 form
   .select({id: 'mySelect', class: 'selectClass', value: {abc: 'abc', def: 'def', ghj: 'ghj'}})
+  .render('theId', 'theClasses');
+```
+
+### Button
+You can add ordinary buttons as well. This requires an extra string to get the text in there.
+```Javascript
+form
+  .button('TextString', {id: 'myButton', class: 'btn'})
   .render('theId', 'theClasses');
 ```
 
@@ -129,8 +138,10 @@ divToPutThisIn.appendChild(form);
 Things to be added are, among others:
 * ~~Implement checkboxes~~
 * ~~Implement radiobuttons~~
-* Implement ```<button>```
+* ~~Implement ```<button>```~~
 * ~~Implement range slider~~
+* Implement date, month, week, time, color etc.
+* Make issues for above fields to keep track.
 * Find out what attributes the different inputs have and add to the white list
 * Add form attributes
 * Research which is better, appendChild vs insertAdjacentHTML
@@ -141,7 +152,7 @@ Things to be added are, among others:
 
 ### Want to help?
 Feel free to help out if you like with:
-* Gulp script to minify the source code and other fun stuff
+* ~~Gulp script to minify the source code and other fun stuff~~
 * Refactor my ugly source code
 * Add new features
 * Turn it in to an NPM / ~~Bower~~ package?

@@ -21,7 +21,7 @@ function JsForm(action, method) {
     'value',
     'width'
   ];
-  var inputTypeWhiteList = [
+  var fieldWhiteList = [
     'button',
     'checkbox',
     'email',
@@ -38,7 +38,7 @@ function JsForm(action, method) {
   ];
 
   var validate = function (type, attr, events) {
-    if (inputTypeWhiteList.indexOf(type) === -1) {
+    if (fieldWhiteList.indexOf(type) === -1) {
       throw new Error('Inproper type used: ' + type);
     }
     if (attr !== undefined && typeof attr !== 'object' || Array.isArray(attr)) {
@@ -61,6 +61,7 @@ function JsForm(action, method) {
       if (method) {
         form.setAttribute('method', method);
       }
+      
       if (action) {
         form.setAttribute('action', action);
       }
@@ -72,7 +73,7 @@ function JsForm(action, method) {
       fields.forEach(function (f) {
         var element = document.createElement(f.field);
 
-        if (f.field == 'label') {
+        if (f.field === 'label') {
           element.innerHTML = f.text;
           if (f.for) {
             element.setAttribute('for', f.for);
@@ -81,10 +82,13 @@ function JsForm(action, method) {
           return;
         }
 
+        if (f.field === 'button') {
+          element.innerHTML = f.text;
+        }
+
         if (f.type) {
           element.setAttribute('type', f.type);
         }
-
 
         if (f.events) {
           for (var i = 0; i < f.events.length; i++) {
@@ -121,8 +125,15 @@ function JsForm(action, method) {
       output.appendChild(form);
     },
 
-    button: function (attr, events) {
-      // this.input('button', attr, events);
+    button: function (str, attr, events) {
+      if (validate('button', attr, events)) {
+        fields.push({
+          field: 'button',
+          text: str,
+          attr: attr,
+          events: events
+        });
+      }
       return this;
     },
 
@@ -135,6 +146,11 @@ function JsForm(action, method) {
           events: events
         });
       }
+      return this;
+    },
+
+    inputButton: function (attr, events) {
+      this.input('button', attr, events);
       return this;
     },
 

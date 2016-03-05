@@ -49,6 +49,8 @@ form
       e.preventDefault();
       console.log('Button clicked');
     }}])
+  .button('Cancel', {id: 'myButton', class: 'btn btn-danger'})
+  .inputButton({id: 'anotherButton', class: 'btn btn-success', value: 'Success'})
   .render('output', 'form-horizontal');
 </script>
 </html>
