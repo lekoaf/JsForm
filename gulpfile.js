@@ -12,10 +12,9 @@ gulp.task('minify', function() {
     .pipe(minify({
         ext:{
             min:'.min.js'
-        },
-        ignoreFiles: ['jsform.min.js']
+        }
     }))
-    .pipe(gulp.dest('src'))
+    .pipe(gulp.dest('dist'))
 });
 
 gulp.task('watch', function () {

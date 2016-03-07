@@ -7,7 +7,7 @@ Why not?
 ## Install
 ```bower install jsform-api```
 ```html
-<script src="bower_components/jsform-api/src/jsform.min.js"></script>
+<script src="bower_components/jsform-api/dist/jsform.min.js"></script>
 ```
 
 ## API
